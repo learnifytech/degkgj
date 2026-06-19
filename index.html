@@ -1,4 +1,683 @@
-<!-- ✅ تغيير 2: حذف "first" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Develoopini by LearnifyTech - Learn. Grow. Earn.</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/main.css">
+<style>
+:root {
+--orange: #F97316;
+--orange-dark: #EA580C;
+--orange-light: #FB923C;
+--navy: #1E2D4E;
+--bg: #0C1220;
+--bg2: #111827;
+--bg3: #1A2332;
+--text: #F1F5F9;
+--text-dim: #94A3B8;
+--text-muted: #64748B;
+--border: rgba(249,115,22,0.15);
+--border-hover: rgba(249,115,22,0.4);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:var(--bg); }
+::-webkit-scrollbar-thumb { background:var(--orange-dark); border-radius:3px; }
+
+nav {
+position:fixed; top:0; width:100%;
+padding:18px 80px;
+display:flex; justify-content:space-between; align-items:center;
+background:rgba(12,18,32,0.92);
+backdrop-filter:blur(20px);
+z-index:1000;
+border-bottom:1px solid var(--border);
+transition:all 0.3s;
+}
+
+.logo { font-size:20px; font-weight:800; text-decoration:none; }
+.logo .l { color:var(--orange); }
+.logo .t { color:#fff; }
+.logo-badge {
+background:var(--orange); color:white;
+font-size:9px; font-weight:700;
+padding:2px 8px; border-radius:20px;
+margin-left:6px; vertical-align:super;
+}
+
+.nav-links { display:flex; gap:34px; list-style:none; }
+.nav-links a {
+color:var(--text-dim); text-decoration:none;
+font-size:14px; font-weight:500;
+transition:color 0.3s; position:relative;
+}
+.nav-links a::after {
+content:''; position:absolute;
+bottom:-4px; left:0; width:0; height:2px;
+background:var(--orange); transition:width 0.3s;
+}
+.nav-links a:hover { color:var(--orange); }
+.nav-links a:hover::after { width:100%; }
+
+.nav-cta {
+background:linear-gradient(135deg,var(--orange-dark),var(--orange));
+color:white; padding:11px 28px; border-radius:50px;
+text-decoration:none; font-size:14px; font-weight:600;
+transition:all 0.3s; box-shadow:0 4px 20px rgba(249,115,22,0.3);
+}
+.nav-cta:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(249,115,22,0.45); }
+
+.hero {
+min-height:100vh; display:flex;
+align-items:center; justify-content:center;
+text-align:center; padding:120px 20px 80px;
+position:relative; overflow:hidden;
+}
+
+.hero-grid {
+position:absolute; inset:0;
+background-image:
+linear-gradient(rgba(249,115,22,0.04) 1px,transparent 1px),
+linear-gradient(90deg,rgba(249,115,22,0.04) 1px,transparent 1px);
+background-size:60px 60px;
+}
+
+.glow-1 {
+position:absolute; top:10%; left:10%;
+width:500px; height:500px;
+background:radial-gradient(circle,rgba(249,115,22,0.12) 0%,transparent 70%);
+filter:blur(40px);
+animation:pulse 4s ease-in-out infinite;
+}
+
+.glow-2 {
+position:absolute; bottom:10%; right:10%;
+width:400px; height:400px;
+background:radial-gradient(circle,rgba(30,45,78,0.5) 0%,transparent 70%);
+filter:blur(40px);
+animation:pulse 4s ease-in-out infinite 2s;
+}
+
+@keyframes pulse {
+0%,100% { opacity:0.6; transform:scale(1); }
+50% { opacity:1; transform:scale(1.1); }
+}
+
+.hero-content { position:relative; z-index:1; max-width:860px; }
+
+.badge {
+display:inline-flex; align-items:center; gap:8px;
+background:rgba(249,115,22,0.1);
+border:1px solid rgba(249,115,22,0.3);
+color:var(--orange-light);
+padding:10px 22px; border-radius:50px;
+font-size:13px; font-weight:500;
+margin-bottom:36px;
+animation:fadeInDown 0.8s ease both;
+}
+
+.badge-dot {
+width:8px; height:8px;
+background:var(--orange); border-radius:50%;
+animation:blink 1.5s ease-in-out infinite;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero h1 {
+font-size:clamp(50px,9vw,96px);
+font-weight:900; line-height:1.05;
+margin-bottom:28px; letter-spacing:-2px;
+animation:fadeInUp 0.8s ease 0.2s both;
+}
+
+.grad {
+background:linear-gradient(135deg,var(--orange-dark),var(--orange),var(--orange-light));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+}
+
+.hero p {
+font-size:18px; color:var(--text-dim);
+max-width:580px; margin:0 auto 48px;
+line-height:1.8; animation:fadeInUp 0.8s ease 0.4s both;
+}
+
+.hero p strong { color:var(--orange-light); font-weight:600; }
+
+.hero-btns {
+display:flex; gap:16px; justify-content:center;
+flex-wrap:wrap; margin-bottom:50px;
+animation:fadeInUp 0.8s ease 0.6s both;
+}
+
+.btn-orange {
+background:linear-gradient(135deg,var(--orange-dark),var(--orange));
+color:white; padding:18px 42px; border-radius:50px;
+text-decoration:none; font-size:16px; font-weight:700;
+transition:all 0.3s; box-shadow:0 6px 25px rgba(249,115,22,0.4);
+display:inline-flex; align-items:center; gap:10px;
+}
+.btn-orange:hover { transform:translateY(-3px); box-shadow:0 14px 40px rgba(249,115,22,0.55); }
+
+.btn-outline {
+background:transparent; color:white;
+padding:18px 42px; border-radius:50px;
+text-decoration:none; font-size:16px; font-weight:700;
+border:2px solid rgba(249,115,22,0.4); transition:all 0.3s;
+display:inline-flex; align-items:center; gap:10px;
+}
+.btn-outline:hover { border-color:var(--orange); background:rgba(249,115,22,0.08); transform:translateY(-3px); }
+
+.scroll-hint {
+display:flex; align-items:center; justify-content:center;
+gap:12px; color:var(--text-muted); font-size:13px;
+animation:fadeInUp 0.8s ease 0.8s both;
+}
+.scroll-line { width:40px; height:1px; background:var(--text-muted); }
+
+.stats-bar {
+background:var(--bg2);
+border-top:1px solid var(--border);
+border-bottom:1px solid var(--border);
+padding:50px 20px;
+}
+.stats-inner {
+max-width:900px; margin:0 auto;
+display:flex; justify-content:space-around;
+flex-wrap:wrap; gap:40px;
+}
+.stat-item { text-align:center; }
+.stat-num {
+font-size:48px; font-weight:900;
+background:linear-gradient(135deg,var(--orange-dark),var(--orange-light));
+-webkit-background-clip:text; -webkit-text-fill-color:transparent;
+background-clip:text; line-height:1; margin-bottom:8px;
+}
+.stat-lbl { font-size:14px; color:var(--text-dim); font-weight:500; }
+
+.wrap { max-width:1100px; margin:0 auto; padding:110px 40px; }
+
+.tag {
+display:inline-flex; align-items:center; gap:8px;
+background:rgba(249,115,22,0.1);
+border:1px solid rgba(249,115,22,0.25);
+color:var(--orange); padding:7px 18px; border-radius:50px;
+font-size:12px; font-weight:600;
+text-transform:uppercase; letter-spacing:1.5px; margin-bottom:22px;
+}
+
+.sec-title {
+font-size:clamp(34px,5vw,56px);
+font-weight:800; margin-bottom:18px;
+letter-spacing:-1px; line-height:1.1;
+}
+.accent { color:var(--orange); }
+
+.sec-desc {
+font-size:17px; color:var(--text-dim);
+line-height:1.8; max-width:580px; margin-bottom:60px;
+}
+
+.cards-3 {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:24px;
+}
+
+.card {
+background:var(--bg2);
+border:1px solid var(--border);
+border-radius:24px; padding:40px 34px;
+transition:all 0.4s; position:relative; overflow:hidden;
+}
+.card::before {
+content:''; position:absolute;
+top:0; left:0; right:0; height:3px;
+background:linear-gradient(90deg,var(--orange-dark),var(--orange-light));
+transform:scaleX(0); transform-origin:left; transition:transform 0.4s;
+}
+.card:hover { border-color:var(--border-hover); transform:translateY(-8px); box-shadow:0 24px 50px rgba(249,115,22,0.12); }
+.card:hover::before { transform:scaleX(1); }
+
+.card-ico {
+width:64px; height:64px;
+background:rgba(249,115,22,0.1);
+border:1px solid rgba(249,115,22,0.2);
+border-radius:18px; display:flex;
+align-items:center; justify-content:center;
+font-size:30px; margin-bottom:24px;
+}
+.card h3 { font-size:20px; font-weight:700; margin-bottom:12px; }
+.card p { font-size:15px; color:var(--text-dim); line-height:1.7; }
+
+.two-col {
+display:grid; grid-template-columns:1fr 1fr;
+gap:80px; align-items:center;
+}
+
+.feat-list { list-style:none; margin-bottom:44px; }
+.feat-list li {
+display:flex; align-items:flex-start;
+gap:16px; padding:18px 0;
+border-bottom:1px solid rgba(249,115,22,0.08);
+}
+.feat-list li:last-child { border-bottom:none; }
+.fcheck {
+width:28px; height:28px; min-width:28px;
+background:linear-gradient(135deg,var(--orange-dark),var(--orange));
+border-radius:50%; display:flex;
+align-items:center; justify-content:center;
+font-size:13px; font-weight:700; color:white; margin-top:2px;
+}
+.ftxt strong { display:block; font-size:15px; font-weight:600; margin-bottom:3px; }
+.ftxt span { font-size:14px; color:var(--text-dim); }
+
+.vis-box {
+background:linear-gradient(135deg,var(--bg2),var(--bg3));
+border:1px solid var(--border);
+border-radius:28px; padding:50px 40px;
+text-align:center;
+animation:float 5s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)} }
+.vis-ico { font-size:90px; display:block; margin-bottom:24px; }
+.vis-title { font-size:26px; font-weight:800; margin-bottom:12px; }
+.vis-desc { font-size:15px; color:var(--text-dim); line-height:1.7; }
+.vis-tag {
+display:inline-block;
+background:rgba(249,115,22,0.12);
+border:1px solid rgba(249,115,22,0.25);
+color:var(--orange-light);
+padding:6px 18px; border-radius:50px;
+font-size:12px; font-weight:600; margin-top:20px;
+}
+
+.skills-sec {
+background:var(--bg2);
+border-top:1px solid var(--border);
+border-bottom:1px solid var(--border);
+}
+.skills-grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:16px;
+}
+.skill-card {
+background:var(--bg3);
+border:1px solid var(--border);
+border-radius:18px; padding:28px 20px;
+text-align:center; transition:all 0.3s; cursor:default;
+}
+.skill-card:hover {
+border-color:var(--orange);
+background:rgba(249,115,22,0.06);
+transform:translateY(-6px);
+box-shadow:0 12px 30px rgba(249,115,22,0.15);
+}
+.skill-emoji { font-size:36px; display:block; margin-bottom:12px; }
+.skill-name { font-size:13px; font-weight:600; color:var(--text-dim); }
+
+.steps-grid {
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+}
+.step-card {
+background:var(--bg2);
+border:1px solid var(--border);
+border-radius:22px; padding:40px 28px;
+text-align:center; transition:all 0.3s;
+}
+.step-card:hover { border-color:var(--border-hover); transform:translateY(-6px); box-shadow:0 16px 40px rgba(249,115,22,0.1); }
+.step-num {
+width:56px; height:56px;
+background:linear-gradient(135deg,var(--orange-dark),var(--orange));
+border-radius:50%; display:flex;
+align-items:center; justify-content:center;
+font-size:22px; font-weight:900; color:white;
+margin:0 auto 24px; box-shadow:0 8px 20px rgba(249,115,22,0.35);
+}
+.step-card h3 { font-size:18px; font-weight:700; margin-bottom:12px; }
+.step-card p { font-size:14px; color:var(--text-dim); line-height:1.7; }
+
+.cta-sec {
+padding:120px 20px; text-align:center;
+position:relative; overflow:hidden;
+}
+.cta-glow {
+position:absolute; top:50%; left:50%;
+transform:translate(-50%,-50%);
+width:700px; height:400px;
+background:radial-gradient(ellipse,rgba(249,115,22,0.12) 0%,transparent 70%);
+filter:blur(30px);
+}
+.cta-box {
+position:relative; max-width:750px;
+margin:0 auto;
+background:linear-gradient(135deg,var(--bg2),var(--bg3));
+border:1px solid rgba(249,115,22,0.25);
+border-radius:36px; padding:80px 60px;
+}
+.cta-box h2 { font-size:clamp(32px,5vw,54px); font-weight:900; margin-bottom:20px; letter-spacing:-1px; }
+.cta-box p { font-size:17px; color:var(--text-dim); margin-bottom:44px; line-height:1.8; }
+.cta-btns { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+footer {
+background:var(--bg2);
+border-top:1px solid var(--border);
+padding:50px 80px;
+}
+.footer-inner {
+max-width:1100px; margin:0 auto;
+display:flex; justify-content:space-between;
+align-items:center; flex-wrap:wrap; gap:24px;
+}
+.f-logo { font-size:20px; font-weight:800; }
+.f-logo .l { color:var(--orange); }
+.f-logo .t { color:white; }
+.f-tag { font-size:13px; color:var(--text-muted); margin-top:4px; }
+.f-links { display:flex; gap:28px; }
+.f-links a { color:var(--text-dim); text-decoration:none; font-size:14px; font-weight:500; transition:color 0.3s; }
+.f-links a:hover { color:var(--orange); }
+.f-copy { font-size:13px; color:var(--text-muted); }
+.f-copy .accent { color:var(--orange); }
+
+@keyframes fadeInUp { from{opacity:0;transform:translateY(35px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+
+.reveal { opacity:0; transform:translateY(50px); transition:opacity 0.8s ease,transform 0.8s ease; }
+.reveal.active { opacity:1; transform:translateY(0); }
+
+@media(max-width:900px) {
+nav { padding:16px 24px; }
+.nav-links { display:none; }
+.two-col { grid-template-columns:1fr; gap:40px; }
+.wrap { padding:80px 24px; }
+footer { padding:40px 24px; }
+.footer-inner { flex-direction:column; text-align:center; }
+.cta-box { padding:50px 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="logo" href="#">
+    <span class="l">Learnify</span><span class="t">Tech</span>
+    <span class="logo-badge">BETA</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#learners">For Learners</a></li>
+    <li><a href="#instructors">For Instructors</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="pages/contact.html">Contact</a></li>
+  </ul>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSJl2ibyn5rt079TjeF23-bgQoYKKX6WsAuaSF650Q5bacdA/viewform"
+     target="_blank" class="nav-cta">Get Started →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="glow-1"></div>
+  <div class="glow-2"></div>
+  <div class="hero-content">
+
+    <!-- ✅ تغيير 1: حذف "First" -->
+    <div class="badge">
+      <span class="badge-dot"></span>
+      🇩🇿 Algeria's Real Learning Platform
+    </div>
+
+    <h1>
+      Learn. Grow.<br>
+      <span class="grad">Earn.</span>
+    </h1>
+    <p>
+      <strong>Develoopini</strong> connects expert Algerian instructors
+      with motivated learners who want to master
+      real job-ready skills fast.
+    </p>
+    <div class="hero-btns">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSJl2ibyn5rt079TjeF23-bgQoYKKX6WsAuaSF650Q5bacdA/viewform"
+         target="_blank" class="btn-orange">🎓 Start Learning</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdemqpjMjuWgqQDjDpMWREHxwCCh5mA_1Zve0mIm0gB5XTPEg/viewform"
+         target="_blank" class="btn-outline">💼 Become Instructor</a>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      Scroll to explore
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-lbl">Expert Instructors</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">50+</div>
+      <div class="stat-lbl">Learners Registered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">10+</div>
+      <div class="stat-lbl">Skills Available</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-lbl">Algerian Platform</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="wrap reveal" id="about" style="text-align:center">
+  <div class="tag">✦ About Develoopini</div>
+  <h2 class="sec-title">Built <span class="accent">for Algeria.</span><br>Built for You.</h2>
+  <p class="sec-desc" style="margin:0 auto 60px">We believe every Algerian deserves access to quality practical education. No outdated theory. No wasted time. Just real skills that open real doors.</p>
+  <div class="cards-3">
+    <div class="card">
+      <div class="card-ico">🎯</div>
+      <h3>Real Skills Only</h3>
+      <p>Every course is practical hands-on and designed to get you results fast. No fluff. No filler. Pure value.</p>
+    </div>
+    <div class="card">
+      <div class="card-ico">🇩🇿</div>
+      <h3>Made for Algeria</h3>
+      <p>Our instructors understand the Algerian market and teach content that is directly applicable here and now.</p>
+    </div>
+    <div class="card">
+      <div class="card-ico">💰</div>
+      <h3>Learn and Earn</h3>
+      <p>Whether you are here to learn or to teach Develoopini helps you turn your skills into real income.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOR LEARNERS -->
+<div class="wrap reveal" id="learners">
+  <div class="two-col">
+    <div>
+      <div class="tag">🎓 For Learners</div>
+      <h2 class="sec-title">Master skills that <span class="accent">matter</span></h2>
+      <p class="sec-desc">Stop watching random videos. Start learning structured courses from real Algerian experts.</p>
+      <ul class="feat-list">
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>Expert Algerian Instructors</strong>
+            <span>Learn from professionals who understand your context</span>
+          </div>
+        </li>
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>Learn at Your Own Pace</strong>
+            <span>Study when you want as much as you want</span>
+          </div>
+        </li>
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>Verified Certificate</strong>
+            <span>Get a Develoopini certificate when you complete each course</span>
+          </div>
+        </li>
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>Affordable Pricing</strong>
+            <span>Start learning from as low as 2000 DA per course</span>
+          </div>
+        </li>
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>Direct Instructor Access</strong>
+            <span>Ask questions and get real answers anytime</span>
+          </div>
+        </li>
+      </ul>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSJl2ibyn5rt079TjeF23-bgQoYKKX6WsAuaSF650Q5bacdA/viewform"
+         target="_blank" class="btn-orange">Start Learning Now →</a>
+    </div>
+    <div class="vis-box">
+      <span class="vis-ico">📚</span>
+      <div class="vis-title">Ready to <span class="accent">grow?</span></div>
+      <div class="vis-desc">Join Algerians who are already learning real skills and building real careers with Develoopini.</div>
+      <div class="vis-tag">✦ New courses every week</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOR INSTRUCTORS -->
+<div class="wrap reveal" id="instructors">
+  <div class="two-col">
+    <div class="vis-box">
+      <span class="vis-ico">💼</span>
+      <div class="vis-title">Share your <span class="accent">expertise</span></div>
+      <div class="vis-desc">Turn the skills you already have into a steady and growing income stream on Develoopini.</div>
+      <div class="vis-tag">✦ You are in full control</div>
+    </div>
+    <div>
+      <div class="tag">💼 For Instructors</div>
+      <h2 class="sec-title">Teach and <span class="accent">earn</span></h2>
+      <p class="sec-desc">Have a skill? Share it. We handle marketing payments and platform management so you focus on teaching.</p>
+      <ul class="feat-list">
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>Reach Thousands of Learners</strong>
+            <span>We market your course across our platform and social media</span>
+          </div>
+        </li>
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>Full Control Over Your Course</strong>
+            <span>You set the price schedule and content always</span>
+          </div>
+        </li>
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>We Handle Everything Else</strong>
+            <span>Marketing payments and platform support all taken care of</span>
+          </div>
+        </li>
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>Start Earning Immediately</strong>
+            <span>No delays. Get paid as soon as students enroll</span>
+          </div>
+        </li>
+        <li>
+          <div class="fcheck">✓</div>
+          <div class="ftxt">
+            <strong>Dedicated Team Support</strong>
+            <span>Our team supports you every step of the journey</span>
+          </div>
+        </li>
+      </ul>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdemqpjMjuWgqQDjDpMWREHxwCCh5mA_1Zve0mIm0gB5XTPEg/viewform"
+         target="_blank" class="btn-orange">Join as Instructor →</a>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="skills-sec" id="skills">
+  <div class="wrap reveal" style="text-align:center">
+    <div class="tag">🛠️ Skills</div>
+    <h2 class="sec-title">What can you <span class="accent">learn?</span></h2>
+    <p class="sec-desc" style="margin:0 auto 60px">From design to development to marketing and beyond.</p>
+    <div class="skills-grid">
+      <div class="skill-card"><span class="skill-emoji">🎨</span><div class="skill-name">Graphic Design</div></div>
+      <div class="skill-card"><span class="skill-emoji">💻</span><div class="skill-name">Web Development</div></div>
+      <div class="skill-card"><span class="skill-emoji">📱</span><div class="skill-name">Social Media</div></div>
+      <div class="skill-card"><span class="skill-emoji">🎬</span><div class="skill-name">Video Editing</div></div>
+      <div class="skill-card"><span class="skill-emoji">📊</span><div class="skill-name">Data Analysis</div></div>
+      <div class="skill-card"><span class="skill-emoji">🤖</span><div class="skill-name">AI Tools</div></div>
+      <div class="skill-card"><span class="skill-emoji">✍️</span><div class="skill-name">Copywriting</div></div>
+      <div class="skill-card"><span class="skill-emoji">💰</span><div class="skill-name">E-commerce</div></div>
+      <div class="skill-card"><span class="skill-emoji">🎙️</span><div class="skill-name">Soft Skills</div></div>
+      <div class="skill-card"><span class="skill-emoji">📈</span><div class="skill-name">Entrepreneurship</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="wrap reveal" id="how" style="text-align:center">
+  <div class="tag">⚡ Process</div>
+  <h2 class="sec-title">Simple as <span class="accent">1 2 3 4</span></h2>
+  <p class="sec-desc" style="margin:0 auto 60px">Getting started on Develoopini takes less than 5 minutes.</p>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <h3>Register Free</h3>
+      <p>Fill our quick form and tell us if you want to learn or teach.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <h3>Choose Your Path</h3>
+      <p>Browse available courses or set up your instructor profile with our help.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <h3>Start Growing</h3>
+      <p>Learn new skills from experts or start teaching and earning immediately.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <h3>Get Certified</h3>
+      <p>Complete your course and receive your official Develoopini certificate.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-sec reveal">
+  <div class="cta-glow"></div>
+  <div class="cta-box">
+    <div class="tag" style="margin-bottom:28px">🚀 Join Now</div>
+    <h2>Ready to start your <span class="accent">journey?</span></h2>
+
+    <!-- ✅ تغيير 2: حذف "first" -->
     <p>Join the Algerian learning platform built by Algerians for Algerians. Whether you want to learn or earn Develoopini is for you.</p>
 
     <div class="cta-btns">
