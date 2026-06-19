@@ -1,48 +1,17 @@
-<!-- ✅ تغيير 2: حذف "first" -->
-    <p>Join the Algerian learning platform built by Algerians for Algerians. Whether you want to learn or earn Develoopini is for you.</p>
-
-    <div class="cta-btns">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeSJl2ibyn5rt079TjeF23-bgQoYKKX6WsAuaSF650Q5bacdA/viewform"
-         target="_blank" class="btn-orange">🎓 Start Learning</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdemqpjMjuWgqQDjDpMWREHxwCCh5mA_1Zve0mIm0gB5XTPEg/viewform"
-         target="_blank" class="btn-outline">💼 Become Instructor</a>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="f-logo"><span class="l">Learnify</span><span class="t">Tech</span></div>
-      <div class="f-tag">Learn · Grow · Earn — Develoopini 2025</div>
-    </div>
-    <div class="f-links">
-      <a href="https://instagram.com/learnifytech" target="_blank">Instagram</a>
-      <a href="mailto:learnifytech8@gmail.com">Email Us</a>
-      <a href="pages/learners.html">For Learners</a>
-      <a href="pages/instructors.html">For Instructors</a>
-      <a href="pages/contact.html">Contact</a>
-    </div>
-    <div class="f-copy">© 2025 <span class="accent">LearnifyTech</span>. All rights reserved.</div>
-  </div>
-</footer>
-
-<script>
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('active');
-  });
-}, { threshold: 0.1 });
-reveals.forEach(el => observer.observe(el));
-
-window.addEventListener('scroll', () => {
-  const nav = document.getElementById('navbar');
-  nav.style.background = window.scrollY > 50
-    ? 'rgba(12,18,32,0.98)'
-    : 'rgba(12,18,32,0.92)';
-});
-</script>
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Develoopini by LearnifyTech — Learn. Grow. Earn.</title>
+    <meta name="description" content="Algeria's premier tech learning platform. Connect with expert Algerian instructors and master real job-ready skills fast." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
